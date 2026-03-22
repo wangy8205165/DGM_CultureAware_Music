@@ -131,7 +131,9 @@ class AudioDiffusion(nn.Module):
         
         unet_config_sd = UNet2DConditionModel.load_config(unet_model_config_path_sd)
 
-        self.sd_pipe = StableDiffusionPipeline.from_pretrained(sd_model_ckpt, use_auth_token='', low_cpu_mem_usage=False, device_map=None) # , scheduler=pipeline.scheduler)
+        # self.sd_pipe = StableDiffusionPipeline.from_pretrained(sd_model_ckpt, use_auth_token='', low_cpu_mem_usage=False, device_map=None) # , scheduler=pipeline.scheduler)
+        
+        self.sd_pipe = StableDiffusionPipeline.from_pretrained(sd_model_ckpt, low_cpu_mem_usage=False, device_map=None) # , scheduler=pipeline.scheduler)
         self.sd_pipe.unet = UNet2DConditionModel.from_config(unet_config_sd, subfolder="unet")
         self.sd_pipe.unet.load_state_dict(torch.load('sd_ckpt/sd_ckpt.pth', map_location='cpu')['unet_state_dict'], strict=False)
         # sd_pipe = sd_pipe.to("cuda")
