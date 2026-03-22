@@ -38,7 +38,7 @@ from collections import OrderedDict
 import torch
 from transformers import BlipForConditionalGeneration, BlipProcessor
 from diffusers import DDIMScheduler, DDIMInverseScheduler, StableDiffusionPix2PixZeroPipeline
-from diffusers import StableDiffusionPipeline, UNet2DConditionModel
+from diffusers import StableDiffusionPipeline, UNet2DConditionModel, StableDiffusionXLPipeline
 
 import requests
 from PIL import Image
@@ -134,7 +134,7 @@ class AudioDiffusion(nn.Module):
 
         # self.sd_pipe = StableDiffusionPipeline.from_pretrained(sd_model_ckpt, use_auth_token='', low_cpu_mem_usage=False, device_map=None) # , scheduler=pipeline.scheduler)
         
-        self.sd_pipe = StableDiffusionPipeline.from_pretrained(sd_model_ckpt, low_cpu_mem_usage=False, device_map=None) # , scheduler=pipeline.scheduler)
+        self.sd_pipe = StableDiffusionXLPipeline.from_pretrained(sd_model_ckpt, low_cpu_mem_usage=False, device_map=None) # , scheduler=pipeline.scheduler)
         self.sd_pipe.unet = UNet2DConditionModel.from_config(unet_config_sd, subfolder="unet")
         self.sd_pipe.unet.load_state_dict(torch.load('sd_ckpt/sd_ckpt.pth', map_location='cpu')['unet_state_dict'], strict=False)
         # sd_pipe = sd_pipe.to("cuda")
