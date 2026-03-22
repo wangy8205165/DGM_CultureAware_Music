@@ -38,7 +38,9 @@ from collections import OrderedDict
 import torch
 from transformers import BlipForConditionalGeneration, BlipProcessor
 from diffusers import DDIMScheduler, DDIMInverseScheduler, StableDiffusionPix2PixZeroPipeline
-from diffusers import StableDiffusionPipeline, UNet2DConditionModel, StableDiffusionXLPipeline
+from diffusers import StableDiffusionPipeline, UNet2DConditionModel
+from diffusers import StableDiffusionXLPipeline
+
 
 import requests
 from PIL import Image
