@@ -1,5 +1,5 @@
 CUDA_VISIBLE_DEVICES=0 python inference.py \
---test_file="data/own_test_set_4.json" \
+--test_file="data/inference_sample.jsonl" \
 --text_encoder_name="google/flan-t5-large" \
 --scheduler_name="stabilityai/stable-diffusion-2-1" \
 --unet_model_config="configs/diffusion_model_config.json" \
