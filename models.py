@@ -54,7 +54,8 @@ import accelerate
 #     captioner_id, low_cpu_mem_usage=True
 # )
 
-sd_model_ckpt = 'stabilityai/stable-diffusion-2-1'
+# sd_model_ckpt = 'stabilityai/stable-diffusion-2-1'
+sd_model_ckpt = 'stabilityai/stable-diffusion-xl-base-1.0'
 
 # generate image latents
 
